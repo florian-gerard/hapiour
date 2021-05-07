@@ -2,6 +2,25 @@
   
   <head>
     <script src=https://passconnect-preprod.groupe-vyv.fr/auth-beneficiaires/js/beneficiaires-utils.js type="text/javascript"></script>
+    
+    
+    <script>
+      
+      window.onload = function() {
+            var redirect_url_reg_exp = /#redirect_url=(.*)/;
+            var anchors = window.location.hash;
+            if(redirect_url_reg_exp.test(anchors)) {
+                
+                var redirect_url = redirect_url_reg_exp.exec(anchors);
+                window.location = redirect_url[1];
+            }
+        };
+      
+      
+      </script>
+    
+    
+    
   </head>
   
   <body>
