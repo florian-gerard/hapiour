@@ -1,36 +1,13 @@
+<script src=https://passconnect-preprod.groupe-vyv.fr/auth-beneficiaires/js/beneficiaires-utils.js type="text/javascript"></script>
+
 <script type="text/javascript">
   
   (function(){
     
-    console.log("init keycloak cross-domain functions...");
-    
-    function cross_domain(access_token) {
-      console.log("sending keycloak cross-domain access_token...");
-      
-      var request = new XMLHttpRequest();
-      request.open("HEAD", "/auth/realms/adherents_rec1/sso/cross-domain", true);
-      request.setRequestHeader("Content-Type", "application/json");
-      request.setRequestHeader("Authorization", "Bearer " + access_token);
-      request.send();
-    }
-    
-    window.onmessage = function(event){
-      console.log("received keycloak cross-domain access_token by message...");
-      
-      var token = event.data;
-      cross_domain(token);
-    };
-    
     window.onload = function() {
-      var access_token_reg_exp = /#access_token=(.*)/;
-      var anchors = window.location.hash;
-      if(access_token_reg_exp.test(anchors)) {
-        console.log("received keycloak cross-domain access_token by anchor...");
-        
-        var result = access_token_reg_exp.exec(anchors);
-        var access_token = result[1];
-        cross_domain(access_token);
-      }
+      
+      alert('TEST');
+      openApplication('MesDocteurs', 'https:// passconnect.groupe-vyv.fr, 'harmonie_mutuelle');
     };
     
   })();
