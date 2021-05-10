@@ -11,9 +11,7 @@
 			<td>{{birthdate}}</td>
 			<td>{{type}}</td>
 			<td>{{link}}</td>
-			<td>
-				<button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>
-			</td>
+			<td>{{openApplicationFct}}</td>
 		</tr>
 		{{/adherents}}
     	</script>
@@ -34,7 +32,16 @@
 	}
 	
 	function renderAdherents(adherents) {
-		var adherents = {adherents: adherents};
+		var adherents = {
+			adherents: adherents,
+			openApplicationFct: function() {
+				if(this.type === 'Assuré') {
+					return '<button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>';
+				} else {
+					return '<button onclick="openApplicationPourUnBeneficiaire('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'ma_mutuelle', '{{this.name}}', '{{this.firstname}}', ''{{this.email}}'','{{this.birthdate}}')">Téléconsultation</button>';
+				}
+			}
+		};
 		var template = document.getElementById('template').innerHTML;
 		var rendered = Mustache.render(template, adherents);
 		
