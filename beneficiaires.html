@@ -11,7 +11,7 @@
 			<td>{{birthdate}}</td>
 			<td>{{type}}</td>
 			<td>{{link}}</td>
-			<td>{{openApplicationFct}}</td>
+			<td>{{#openApplicationFct}}{{/openApplicationFct}}</td>
 		</tr>
 		{{/adherents}}
     	</script>
@@ -35,11 +35,13 @@
 		var adherents = {
 			adherents: datas,
 			openApplicationFct: function() {
-				if(this.type === 'Assuré') {
-					return "<button onclick= \"openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')\">Téléconsultation</button>";
-				} else {
-					return "<button onclick=\"openApplicationPourUnBeneficiaire('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'ma_mutuelle', '{{this.name}}', '{{this.firstname}}', ''{{this.email}}'','{{this.birthdate}}')\">Téléconsultation</button>";
-				}
+				return function (text, render) {
+					if(this.type === 'Assuré') {
+						return "<button onclick= \"openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')\">Téléconsultation</button>";
+					} else {
+						return "<button onclick=\"openApplicationPourUnBeneficiaire('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'ma_mutuelle', '{{this.name}}', '{{this.firstname}}', ''{{this.email}}'','{{this.birthdate}}')\">Téléconsultation</button>";
+					}
+				};
 			}
 		};
 		var template = document.getElementById('template').innerHTML;
