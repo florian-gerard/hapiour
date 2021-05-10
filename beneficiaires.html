@@ -31,9 +31,9 @@
 		}
 	}
 	
-	function renderAdherents(adherents) {
+	function renderAdherents(datas) {
 		var adherents = {
-			adherents: adherents,
+			adherents: datas,
 			openApplicationFct: function() {
 				if(this.type === 'Assuré') {
 					return '<button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>';
@@ -52,10 +52,10 @@
 	
 		var params = window.location.search;
 		
-		var adherents = getAdherents(params);
+		var datas = getAdherents(params);
 		
-		if(adherents) {
-			renderAdherents(adherents);
+		if(datas) {
+			renderAdherents(datas);
 		}
 
 	};
