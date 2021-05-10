@@ -36,9 +36,9 @@
 			adherents: datas,
 			openApplicationFct: function() {
 				if(this.type === 'Assuré') {
-					return '<button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>';
+					return "<button onclick= \"openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')\">Téléconsultation</button>";
 				} else {
-					return '<button onclick="openApplicationPourUnBeneficiaire('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'ma_mutuelle', '{{this.name}}', '{{this.firstname}}', ''{{this.email}}'','{{this.birthdate}}')">Téléconsultation</button>';
+					return "<button onclick=\"openApplicationPourUnBeneficiaire('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'ma_mutuelle', '{{this.name}}', '{{this.firstname}}', ''{{this.email}}'','{{this.birthdate}}')\">Téléconsultation</button>";
 				}
 			}
 		};
