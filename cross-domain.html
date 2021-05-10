@@ -29,7 +29,7 @@
             var redirect_url_reg_exp = /(\?|&)redirect_url=([^\?&]*)/;
             if(redirect_url_reg_exp.test(params)) {
                 var result = redirect_url_reg_exp.exec(params);
-                return decodeURI(result[2]);
+                return decodeURIComponent(result[2]);
             }
         }
 
@@ -37,7 +37,7 @@
             var access_token_reg_exp = /(\?|&)access_token=([^\?&]*)/;
             if(access_token_reg_exp.test(params)) {
                 var result = access_token_reg_exp.exec(params);
-                return  result[2];
+                return decodeURIComponent(result[2]);
             }
         }
 
