@@ -14,10 +14,15 @@
             request.send();*/
 
             var request = new XMLHttpRequest();
-            request.open("GET", "https://florian-gerard.github.io/hapiour/endpoint.do?"+access_token, false);
+            request.open("GET", "https://florian-gerard.github.io/hapiour/endpoint.do?"+access_token, true);
+            if(callback && typeof callback === 'function') {
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === 2) {
+                        callback();
+                    }
+                };
+            }
             request.send();
-            callback && callback();
-
         }
 
         function getRedirectUrl(params) {
