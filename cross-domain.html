@@ -14,7 +14,7 @@
             request.send();*/
 
             var request = new XMLHttpRequest();
-            request.open("GET", "https://florian-gerard.github.io/hapiour/cross-domain.html?"+access_token, false);
+            request.open("GET", "https://florian-gerard.github.io/hapiour/endpoint.do?"+access_token, false);
             request.send();
             callback && callback();
 
