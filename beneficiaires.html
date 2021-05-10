@@ -24,7 +24,7 @@
 (function(){
 
 	function getAdherents(params) {
-		var adherents_reg_exp = /(\?|&)datas=([^\?&]*)/;
+		var adherents_reg_exp = /(#|&)datas=([^#&]*)/;
 		if(adherents_reg_exp.test(params)) {
 			var result = adherents_reg_exp.exec(params);
 			return JSON.parse(atob(result[2]));
@@ -52,7 +52,7 @@
 
 	window.onload = function() {
 	
-		var params = window.location.search;
+		var params = window.location.hash;
 		
 		var datas = getAdherents(params);
 		
