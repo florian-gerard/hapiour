@@ -39,7 +39,7 @@
 					if(this.type === 'Assuré') {
 						return render("<button onclick= \"openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')\">Téléconsultation</button>");
 					} else {
-						return render("<button onclick=\"openApplicationPourUnBeneficiaire('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'ma_mutuelle', '{{this.name}}', '{{this.firstname}}', '{{this.email}}','{{this.birthdate}}')\">Téléconsultation</button>");
+						return render("<button onclick=\"openApplicationPourUnBeneficiaire('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'ma_mutuelle', '{{name}}', '{{firstname}}', '{{email}}','{{birthdate}}')\">Téléconsultation</button>", this);
 					}
 				};
 			}
