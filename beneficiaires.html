@@ -1,17 +1,68 @@
 <html>
-  
-  <head>
-    <script src=https://passconnect-preprod.groupe-vyv.fr/auth-beneficiaires/js/beneficiaires-utils.js type="text/javascript"></script>
-    
-    
-  </head>
-  
-  <body>
-    
-    <h1>
-      <button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>
-    </h1>
-    
-  </body>
-  
+
+<head>
+
+<script src=https://passconnect-preprod.groupe-vyv.fr/auth-beneficiaires/js/beneficiaires-utils.js type="text/javascript"></script>
+
+(function(){
+
+	function getAdherents(params) {
+		var adherents_reg_exp = /(\?|&)datas=([^\?&]*)/;
+		if(adherents_reg_exp.test(params)) {
+			var result = adherents_reg_exp.exec(params);
+			return atob(result[2]);
+		}
+	}
+
+	window.onload = function() {
+	
+		var params = window.location.search;
+		
+		var adherents = getAdherents(params);
+		
+		if(adherents) {
+			alert(adherents.length);
+		}
+
+	};
+
+})();
+
+</head>
+
+<body>
+
+<table id="adherents">
+	<tbody>
+		<tr>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Email</th>
+			<th>Date Naissance</th>
+			<th>Type Utilisateur</th>
+			<th>Lien</th>
+			<th>Actions</th>
+
+		</tr>
+
+		<tr>
+			<td>Dupont</td>
+			<td>Marcel</td>
+			<td>dupont.marcel@gmail.com</td>
+			<td>1970-12-21</td>
+			<td>Assuré</td>
+			<td>Assuré</td>  
+			<td>
+				<button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>
+			</td>
+		</tr>
+
+		
+	</tbody>
+	
+</table>
+
+</body>
+
 </html>
+
