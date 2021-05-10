@@ -16,7 +16,7 @@
             var request = new XMLHttpRequest();
             request.open("GET", "https://florian-gerard.github.io/hapiour/endpoint.do?"+access_token, true);
             if(callback && typeof callback === 'function') {
-                xhr.onreadystatechange = function () {
+                request.onreadystatechange = function () {
                     if(xhr.readyState === 2) {
                         callback();
                     }
