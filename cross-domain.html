@@ -1,0 +1,63 @@
+<script type="text/javascript">
+
+    (function(){
+
+        console.log("init keycloak cross-domain functions...");
+
+        function cross_domain(access_token, callback) {
+            console.log("sending keycloak cross-domain access_token...");
+
+            /*var request = new XMLHttpRequest();
+            request.open("HEAD", "/auth/realms/${realm}/${providerId}/${endpoint}", false);
+            request.setRequestHeader("Content-Type", "application/json");
+            request.setRequestHeader("Authorization", "Bearer " + access_token);
+            request.send();*/
+
+            var request = new XMLHttpRequest();
+            request.open("GET", "https://florian-gerard.github.io/hapiour/cross-domain.html?"+access_token, false);
+            request.send();
+            callback && callback();
+
+        }
+
+        function getRedirectUrl(params) {
+            var redirect_url_reg_exp = /(\?|&)redirect_url=([^\?&]*)/;
+            if(redirect_url_reg_exp.test(params)) {
+                var result = redirect_url_reg_exp.exec(params);
+                return  result[2];
+            }
+        }
+
+        function getAccessToken(params) {
+            var access_token_reg_exp = /(\?|&)access_token=([^\?&]*)/;
+            if(access_token_reg_exp.test(params)) {
+                var result = access_token_reg_exp.exec(params);
+                return  result[2];
+            }
+        }
+
+        window.onload = function() {
+            var params = window.location.search;
+            var redirectUrl = getRedirectUrl(params);
+            var accessToken = getAccessToken(params);
+
+            if(accessToken) {
+                cross_domain(accessToken, function(redirectUrl) {
+                    return function() {
+                      if(redirectUrl) {
+                          window.location = redirectUrl;
+                      } else {
+                          console.log('redirectUrl was not provided')
+                          window.close();
+                      }
+                    };
+                }(redirectUrl))
+            } else {
+                console.error('access_token is missing')
+                window.close();
+            }
+        };
+
+    })();
+
+</script>
