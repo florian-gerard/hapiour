@@ -3,6 +3,7 @@
 <head>
 
 <script src=https://passconnect-preprod.groupe-vyv.fr/auth-beneficiaires/js/beneficiaires-utils.js type="text/javascript"></script>
+<script src="mustache.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 
@@ -12,8 +13,7 @@
 		var adherents_reg_exp = /(\?|&)datas=([^\?&]*)/;
 		if(adherents_reg_exp.test(params)) {
 			var result = adherents_reg_exp.exec(params);
-			var rawDatas = atob(result[2]);
-			return JSON.parse(rawDatas);
+			return JSON.parse(atob(result[2]));
 		}
 	}
 
@@ -21,6 +21,7 @@
 	
 		var params = window.location.search;
 		
+		window.location.search = '';
 		var adherents = getAdherents(params);
 		
 		if(adherents) {
