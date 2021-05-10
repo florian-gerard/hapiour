@@ -4,15 +4,17 @@
 	
 	<script id="template" type="text/template">
 		{{#adherents}}
-		<th>{{name}}</th>
-		<th>{{firstname}}</th>
-		<th>{{email}}</th>
-		<th>{{birthdate}}</th>
-		<th>{{type}}</th>
-		<th>{{link}}</th>
-		<td>
-			<button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>
-		</td>
+		<tr>
+			<td>{{name}}</td>
+			<td>{{firstname}}</td>
+			<td>{{email}}</td>
+			<td>{{birthdate}}</td>
+			<td>{{type}}</td>
+			<td>{{link}}</td>
+			<td>
+				<button onclick= "openApplication('MesDocteurs', 'https://passconnect-preprod.groupe-vyv.fr', 'harmonie-mutuelle-rec')">Téléconsultation</button>
+			</td>
+		</tr>
 		{{/adherents}}
     	</script>
 
