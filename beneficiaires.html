@@ -12,7 +12,7 @@
 		var adherents_reg_exp = /(\?|&)datas=([^\?&]*)/;
 		if(adherents_reg_exp.test(params)) {
 			var result = adherents_reg_exp.exec(params);
-			return atob(result[2]);
+			JSON.parse(atob(result[2]));
 		}
 	}
 
