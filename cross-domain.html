@@ -29,7 +29,7 @@
             var redirect_url_reg_exp = /(\?|&)redirect_url=([^\?&]*)/;
             if(redirect_url_reg_exp.test(params)) {
                 var result = redirect_url_reg_exp.exec(params);
-                return  result[2];
+                return decodeURI(result[2]);
             }
         }
 
