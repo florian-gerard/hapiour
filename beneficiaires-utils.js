@@ -26,7 +26,8 @@ function openApplicationPourUnBeneficiaire(application, authSrv, idpCode, nomBen
 	form.setAttribute("method", "post");
 	form.setAttribute("action", urlApiBeneficiaire);
 
-	form.setAttribute("target", application);
+	//form.setAttribute("target", application);
+	form.setAttribute("target", "_self");
 	var params = {
 		nom_beneficiaire : nomBeneficiaire,
 		prenom_beneficiaire : prenomBeneficiaire,
@@ -58,7 +59,8 @@ function openApplicationPourUnBeneficiaire(application, authSrv, idpCode, nomBen
 		}
 	}
 
-	window.open('', application);
+	//window.open('', application);
+	window.open('', '_self');
 	form.submit();
 	form.parentNode.removeChild(form);
 }
@@ -86,7 +88,8 @@ function openApplication(application, authSrv, idpCode, cguconsent, storageconse
 	form.setAttribute("method", "post");
 	form.setAttribute("action", urlApiBeneficiaire);
 
-	form.setAttribute("target", application);
+	//form.setAttribute("target", application);
+	form.setAttribute("target", "_self");
 	var params = {
 		kc_idp_hint : idpCode,
 		idpCode : idpCode,
@@ -113,7 +116,8 @@ function openApplication(application, authSrv, idpCode, cguconsent, storageconse
 		}
 	}
 
-	window.open('', application);
+	//window.open('', application);
+	window.open('', '_self');
 	form.submit();
 	form.parentNode.removeChild(form);
 
